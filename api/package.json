@@ -1,0 +1,23 @@
+{
+  "name": "Scheduled-Messages-WhatsApp",
+  "version": "1.0.0",
+  "description": "https://www.urlencoder.org/\r https://api.whatsapp.com/send?phone=xxxxxxxxxx&text=urlencodedtext",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasbarcojo/Scheduled-Messages-WhatsApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasbarcojo/Scheduled-Messages-WhatsApp/issues"
+  },
+  "homepage": "https://github.com/tomasbarcojo/Scheduled-Messages-WhatsApp#readme",
+  "dependencies": {
+    "puppeteer": "^5.4.1"
+  }
+}
