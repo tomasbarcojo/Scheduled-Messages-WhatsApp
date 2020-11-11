@@ -1,4 +1,4 @@
-# Scheduled-Messages-WhatsApp
+# Diff APP
 
 - https://www.urlencoder.org/
 - https://api.whatsapp.com/send?phone=xxxxxxxxxx&text=urlencodedtext
