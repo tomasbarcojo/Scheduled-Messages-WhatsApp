@@ -1,12 +1,12 @@
-const server = require('express').Router();
-const { Classes } = require('../db.js');
+const server = require('express').Router()
+const { getClasses, createClass, modifyClass, deleteClass } = require('../controllers/classes')
 
-server.get('/', (req, res, next) => {
-	Classes.findAll()
-		.then(classes => {
-			res.send(classes);
-		})
-		.catch(next);
-});
+server.get('/', getClasses)
 
-module.exports = server;
+server.post('/createClass', createClass)
+
+server.put('/editClass', modifyClass)
+
+server.delete('/deleteClass', deleteClass)
+
+module.exports = server
