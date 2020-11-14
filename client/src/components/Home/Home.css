@@ -19,8 +19,8 @@ html, body {
     height: 100vh;
     align-items: center;
     /* background-color: #1A1A1D; */
-    /* background-image: url(../../background-image/nature_mountain_eagle_fog.jpg); */
-    /* background-size: cover; */
+    background-image: url(../../Images/203519.jpg);
+    background-size: cover;
   }
   
   .InnerContainer {
@@ -38,6 +38,12 @@ html, body {
     font-size: 2.5em;
     padding-bottom: 10px;
     border-bottom: 2px solid white;
+  }
+
+  .descInputs {
+    display: flex;
+    color: white;
+    font-size: 1.3em;
   }
   
   .button {
