@@ -11,6 +11,11 @@ html, body {
   * {
     box-sizing: border-box;
   }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
   
   .OuterContainer {
     display: flex;
@@ -31,6 +36,17 @@ html, body {
     border-radius: none;
     padding: 15px 20px;
     width: 100%;
+    margin-top: 5px;
+    font-size: 120%;
+    /* font-weight: bold; */
+  }
+
+  .data {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    background-color: red;
+    padding: 5px;
   }
   
   .heading {
@@ -42,21 +58,37 @@ html, body {
 
   .descInputs {
     display: flex;
+    justify-content: center;
     color: white;
     font-size: 1.3em;
+    margin-top: 20px;
   }
   
-  .button {
+  /* .button {
       color: #fff !important;
       text-transform: uppercase;
       text-decoration: none;
-      background: #2979FF;
-      padding: 20px;
+      font-size: 100%;
+      font-weight: bold;
+      background: #166e85;
+      padding: 15px;
       border-radius: 5px;
-      display: inline-block;
       border: none;
+      margin: 20px;
       width: 100%;
-  }
+  } */
+
+  .button {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2979FF;
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    width: 100%;
+}
   
   .mt-20 {
     margin-top: 20px;
