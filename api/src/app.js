@@ -1,8 +1,9 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const path = require('path')
 const routes = require("./routes/index.js");
-const { User, Cohorte, Grouppm, Student, Groupp, Checkpoint, Calendar, Modulo } = require("./db.js")
+const { Classes, User } = require("./db.js")
 const server = express();
 
 server.name = "API";
@@ -19,6 +20,8 @@ server.use((req, res, next) => {
 });
 
 server.use("/", routes);
+
+server.use(express.static(path.join(__dirname, '../public')))
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

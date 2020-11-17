@@ -1,4 +1,4 @@
-const { Users } = require('../db.js')
+const { User } = require('../db.js')
 const bcrypt = require("bcrypt");
 
 const hashPassword = (password) => new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ const hashPassword = (password) => new Promise((resolve, reject) => {
     })
   })
   
-  Users.addHook('beforeCreate', (user) => hashPassword(user.password)
+  User.addHook('beforeCreate', (user) => hashPassword(user.password)
     .then((newPassword) => {
       user.set('password', newPassword)
     })
@@ -22,9 +22,15 @@ const hashPassword = (password) => new Promise((resolve, reject) => {
 module.exports = {
     async getUsers(req, res) {
         try {
-
-        } catch {
-
+          const users = await User.findAll()
+          if (users && users.length === 0) {
+            return res.status(404).send({message: 'No users'})
+          } else {
+            return res.status(200).send(users)
+          }
+        } catch (err) {
+          console.log(err)
+          res.status(400).send({message: 'Failed to get users'})
         }
     },
 

@@ -1,12 +1,12 @@
 const server = require('express').Router()
 const { getUsers, createUser, modifyUser, deleteUser } = require('../controllers/user')
 
-server.get('/', getClasses)
+server.get('/', getUsers)
 
-server.post('/createClass', createClass)
+server.post('/createClass', createUser)
 
-server.put('/editClass', modifyClass)
+server.put('/editClass', modifyUser)
 
-server.delete('/deleteClass', deleteClass)
+server.delete('/deleteClass', deleteUser)
 
 module.exports = server
