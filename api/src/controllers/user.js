@@ -53,6 +53,22 @@ module.exports = {
         }
     },
 
+    async loginUser(req, res) {
+      const { email, password } = req.body;
+      try {
+        const user = await User.findOne({ where: { email: email } })
+        if (!user) {
+          return res.status(400).send({ message: "Cuenta inexistente, registrese", status: 400 })
+        }
+        const validate = await bcrypt.compare(password, user.password)
+        if (!validate) return res.status(400).json({ message: 'Invalid credentials' })
+        res.status(200).send(user)
+      } catch (err) { 
+        console.log(err)
+        res.status(500).send(err)
+      }
+    },
+
     async modifyUser(req, res) {
         try {
 
@@ -69,16 +85,4 @@ module.exports = {
         }
     },
 
-    async loginUser(req, res) {
-        const { email, password } = req.body;
-        try {
-          const user = await User.findOne({ where: { email: email } })
-          if (!user) {
-            return res.status(400).send({ message: "Cuenta inexistente, registrese", status: 400 })
-          }
-          const validate = await bcrypt.compare(password, user.password)
-          if (!validate) return res.status(400).json({ message: 'Credenciales inválidas' })
-          res.status(200).send({ token: token, user })
-        } catch (error) { console.log(error) }
-      }
 }
