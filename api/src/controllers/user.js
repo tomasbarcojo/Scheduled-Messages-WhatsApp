@@ -35,7 +35,7 @@ module.exports = {
     },
 
     async createUser(req, res) {
-      const { name, lastname, email, password } = req.bod
+      const { name, lastname, email, password } = req.body
       if (!name || !lastname || !email || !password) {
         res.status(400).send({message: 'Data required'})
       }
