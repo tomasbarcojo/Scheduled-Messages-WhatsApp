@@ -35,10 +35,21 @@ module.exports = {
     },
 
     async createUser(req, res) {
+      const { name, lastname, email, password } = req.bod
+      if (!name || !lastname || !email || !password) {
+        res.status(400).send({message: 'Data required'})
+      }
         try {
-
-        } catch {
-
+          const user = await User.findOne({ where: { email: email } })
+          if (user) {
+            return res.send({ message: "User already exists", status: 400 });
+          }
+          const userData = { name, lastname, email, password };
+          const newUser = await User.create(userData)
+          return res.status(201).send(newUser)
+        } catch (err){
+          console.log(err)
+          return res.status(500).send(err)
         }
     },
 

@@ -3,10 +3,10 @@ const { getUsers, createUser, modifyUser, deleteUser } = require('../controllers
 
 server.get('/', getUsers)
 
-server.post('/createClass', createUser)
+server.post('/createUser', createUser)
 
-server.put('/editClass', modifyUser)
+server.put('/editUser', modifyUser)
 
-server.delete('/deleteClass', deleteUser)
+server.delete('/deleteUser', deleteUser)
 
 module.exports = server

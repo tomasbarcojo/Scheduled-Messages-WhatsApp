@@ -32,6 +32,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Classes } = sequelize.models;
 
+Classes.belongsTo(User)
+
 
 // Aca vendrian las relaciones
 // Relaciones:
