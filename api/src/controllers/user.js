@@ -55,6 +55,9 @@ module.exports = {
 
     async loginUser(req, res) {
       const { email, password } = req.body;
+      if (!email || !password) {
+        res.status(400).send({message: 'Data required'})
+      }
       try {
         const user = await User.findOne({ where: { email: email } })
         if (!user) {
@@ -70,19 +73,43 @@ module.exports = {
     },
 
     async modifyUser(req, res) {
+      const { name, lastname, newpassword } = req.body
         try {
+          const user = await User.findByPk(req.params.id)
+          if (!user) return res.status(404).send('User does not exist')
 
+          user.name = name || user.name;
+          user.lastname = lastname || user.lastname;
+          let changedPassword = await hashPassword(newpassword)
+          user.password = changedPassword || user.password;
+
+          await user.save()
+          res.status(200).send(user)
+        } catch (err) {
+          console.log(err);
+          res.status(500).send({message: 'Something went wrong'})
+        }
+    },
+
+    async deleteUser(req, res) { // not used
+        try {
+          
         } catch {
 
         }
     },
 
-    async deleteUser(req, res) {
-        try {
-
-        } catch {
-
+    async getOneUser(req, res) {
+      try {
+        const user = await User.findByPk(req.params.id)
+        if (!user) {
+          res.status(404).send({message: 'User not found'})
         }
-    },
+        res.status(200).send(user)
+      } catch (err) {
+        console.log(err)
+        res.status(500).send(err)
+      }
+  },
 
 }
