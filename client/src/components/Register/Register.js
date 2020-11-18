@@ -17,7 +17,7 @@ export default function Register() {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      if (!data.name) {
+      if (!data.name || !data.lastname || !data.email || !data.password) {
           alert('Faltan datos')
       } else {
           history.push('/dashboard')
@@ -28,7 +28,7 @@ export default function Register() {
     <div className='OuterContainer'>
             <div className='InnerContainer'>
                 <h1 className='heading'>Sign In</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} noValidate>
                     <div>
                         <input
                         name='name'

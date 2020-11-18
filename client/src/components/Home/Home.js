@@ -1,36 +1,50 @@
 import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import './Home.css'
 
 export default function Home() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [data, setData] = useState ({
+        name: '',
+        lastname: '',
+    })
+
+    const dispatch = useDispatch()
+
+    const handleChange = (event) => {
+        setData({...data, [event.target.name]: event.target.value})
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
 
     return (
         <div className='OuterContainer'>
             <div className='InnerContainer'>
                 <h1 className='heading'>Welcome!</h1>
-                <div>
-                    <input
-                    className='Input' 
-                    type='text'
-                    placeholder='Email'
-                    onChange={e => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <input 
-                    className='Input mt-20' 
-                    type='password' 
-                    placeholder='Password'
-                    onChange={e => setPassword(e.target.value)}
-                    />
-                </div>
-                <a href='https://google.com.ar'>
-                <Link /*onClick={dispatch()}*/ to='/dashboard'>
+                <form onSubmit={handleSubmit} noValidate>
+                    <div>
+                        <input
+                        name='name'
+                        className='Input' 
+                        type='text'
+                        placeholder='Email'
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <input
+                        name='password'
+                        className='Input mt-20' 
+                        type='password' 
+                        placeholder='Password'
+                        onChange={handleChange}
+                        />
+                    </div>
                     <button className='button mt-20' type="submit">Log In</button>
-                </Link>
-                </a>
+                </form>
                 <div className='CreateAccount mt-20'>
                 <Link to='/register'>
                     <span>Create account</span>
