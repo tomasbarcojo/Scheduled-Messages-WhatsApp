@@ -1,25 +1,28 @@
-export const userLogin = (input, history) => async dispatch => {
-    await fetch(`http://localhost:3001/login`, {
+import Swal from 'sweetalert2';
+
+export const userLogin = (data, history) => async dispatch => {
+    await fetch(`http://localhost:3001/user/login`, {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify(data),
     })
         .then((res) => res.json())
         .then((response) => {
-            if (response.error && response.message === 'usuario o password no valido') {
-                swal("Ups!", "Error en el inicio de sesion", "error")
+            console.log(response)
+            if (response.status === 401) {
+                Swal.fire("Email or password are invalid", "", "error")
             }
             else if (response.status === 200) {
-                localStorage.setItem('user', JSON.stringify(response.user))
+                // localStorage.setItem('user', JSON.stringify(response.user))
                 dispatch({
-                    type: 'USER_LOGGED',
+                    type: 'LOGIN_USER',
                     payload: response.user,
                 })
-                swal("Usuario logueado con exito", "", "success")
-                history.push('/')
+                // Swal.fire("You are logged in!", "", "success")
+                history.push('/dashboard')
             }
         })
         .catch((error) => {
@@ -41,38 +44,20 @@ export const addUser = (user) => async dispatch => {
 			.then(data => data.json())
 			.then(res => {
 				if (res.status === 400) {
-					swal("Ups!", "El email ya esta siendo utilizado", "error")
+					Swal.fire("Ups!", "El email ya esta siendo utilizado", "error")
 				} else if (res.status === 201) {
 					localStorage.setItem('user_sign', JSON.stringify(res.user))
 					dispatch({
 						type: 'ADD_USER',
 						payload: res.user,
 					})
-					swal("Usuario creado con exito", "", "success")
+					Swal.fire("Usuario creado con exito", "", "success")
 				}
 			})
 			.catch((error) => { console.log(error) })
 	} catch (err) {
 		console.log(err)
 	}
-}
-
-export const resetPassword = (userId) => async dispatch => {
-    await fetch(`http://localhost:3001/user/${userId}/passwordReset`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-    })
-        .then((res) => res.json())
-        .then((data) =>
-            dispatch({
-                type: 'RESET_PASSWORD',
-                payload: data,
-            })
-        )
 }
 
 export const resetPassword = (userId) => async dispatch => {

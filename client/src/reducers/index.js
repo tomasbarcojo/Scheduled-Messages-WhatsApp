@@ -13,13 +13,6 @@ export default function rootReducer(state = initialstate, action) {
 				user: action.payload,
 				userLogged: true,
             }
-        
-        case 'USER_LOGGED':
-            return {
-                ...state,
-                user: action.payload,
-                userLogged: true,	
-            }
 
 		case 'ADD_USER':
 			return {

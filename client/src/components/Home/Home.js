@@ -1,23 +1,26 @@
 import React, { useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from "react-redux";
+import { userLogin } from '../../actions/index'
 import './Home.css'
 
 export default function Home() {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [data, setData] = useState ({
-        name: '',
-        lastname: '',
+        email: '',
+        password: '',
     })
 
-    const dispatch = useDispatch()
 
     const handleChange = (event) => {
         setData({...data, [event.target.name]: event.target.value})
+        console.log(event.target.name, event.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        dispatch(userLogin(data, history))
     }
 
     return (
@@ -27,7 +30,7 @@ export default function Home() {
                 <form onSubmit={handleSubmit} noValidate>
                     <div>
                         <input
-                        name='name'
+                        name='email'
                         className='Input' 
                         type='text'
                         placeholder='Email'

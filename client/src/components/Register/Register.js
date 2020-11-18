@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import swal from 'sweetalert2'
+
 // import './Register.css'
 
 export default function Register() {
   const history = useHistory()
+  const dispatch = useDispatch()
   const [data, setData] = useState({
       name: '',
       lastname: '',

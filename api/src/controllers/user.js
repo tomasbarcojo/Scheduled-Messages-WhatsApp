@@ -61,11 +61,11 @@ module.exports = {
       try {
         const user = await User.findOne({ where: { email: email } })
         if (!user) {
-          return res.status(400).send({ message: "Cuenta inexistente, registrese", status: 400 })
+          return res.status(400).send({ message: "Non-existent account, please sign in", status: 400 })
         }
         const validate = await bcrypt.compare(password, user.password)
-        if (!validate) return res.status(400).json({ message: 'Invalid credentials' })
-        res.status(200).send(user)
+        if (!validate) return res.status(401).json({ message: 'Invalid credentials', status: 401 })
+        res.status(200).send({user, status: 200})
       } catch (err) { 
         console.log(err)
         res.status(500).send(err)
@@ -77,7 +77,7 @@ module.exports = {
         try {
           const user = await User.findByPk(req.params.id)
           if (!user) return res.status(404).send('User does not exist')
-
+          
           user.name = name || user.name;
           user.lastname = lastname || user.lastname;
           let changedPassword = await hashPassword(newpassword)
