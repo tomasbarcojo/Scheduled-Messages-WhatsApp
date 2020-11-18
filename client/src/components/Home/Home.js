@@ -26,9 +26,16 @@ export default function Home() {
                     onChange={e => setPassword(e.target.value)}
                     />
                 </div>
+                <a href='https://google.com.ar'>
                 <Link /*onClick={dispatch()}*/ to='/dashboard'>
                     <button className='button mt-20' type="submit">Log In</button>
                 </Link>
+                </a>
+                <div className='CreateAccount mt-20'>
+                <Link to='/register'>
+                    <span>Create account</span>
+                </Link>
+                </div>
             </div>
         </div>
     )

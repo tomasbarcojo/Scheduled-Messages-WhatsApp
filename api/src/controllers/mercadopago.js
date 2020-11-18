@@ -6,7 +6,7 @@ mercadopago.configure({
 
 module.exports = {
     async MP (req, res) {
-        console.log(mercadopago)
+        // console.log(mercadopago)
         try {
             let preference =  {
                 items: [
@@ -17,13 +17,15 @@ module.exports = {
                     }
                 ]
             }
-            console.log(mercadopago.preferences.create(preference))
-            // .then(function(response){
-            //     // Este valor reemplazará el string "<%= global.id %>" en tu HTML
-            //       global.id = response.body.id;
-            //     }).catch(function(error){
-            //       console.log(error);
-            //     });
+            mercadopago.preferences.create(preference)
+            .then(function(response){
+                console.log(response)
+                res.send({preferenceId: response.body.init_point.split('pref_id=')[1]});
+                // Este valor reemplazará el string "<%= global.id %>" en tu HTML
+                global.id = response.body.id;
+            }).catch(function(error){
+                console.log(error);
+            });
 
         } catch (err) {
             console.log(err);

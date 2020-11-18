@@ -93,6 +93,11 @@ html, body {
   .mt-20 {
     margin-top: 20px;
   }
+
+  .CreateAccount {
+    /* display: flex; */
+    font-size: 1.1em;
+  }
   
   @media (min-width: 320px) and (max-width: 480px) {
     .OuterContainer {
