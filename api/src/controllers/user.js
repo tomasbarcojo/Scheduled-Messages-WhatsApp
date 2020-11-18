@@ -37,7 +37,7 @@ module.exports = {
     async createUser(req, res) {
       const { name, lastname, email, password } = req.body
       if (!name || !lastname || !email || !password) {
-        res.status(400).send({message: 'Data required'})
+        res.status(401).send({message: 'Data required', status: 401})
       }
         try {
           const user = await User.findOne({ where: { email: email } })
@@ -46,7 +46,7 @@ module.exports = {
           }
           const userData = { name, lastname, email, password };
           const newUser = await User.create(userData)
-          return res.status(201).send(newUser)
+          return res.status(201).send({newUser, status: 201})
         } catch (err){
           console.log(err)
           return res.status(500).send(err)

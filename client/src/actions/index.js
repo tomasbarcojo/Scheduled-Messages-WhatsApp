@@ -11,7 +11,6 @@ export const userLogin = (data, history) => async dispatch => {
     })
         .then((res) => res.json())
         .then((response) => {
-            console.log(response)
             if (response.status === 401) {
                 Swal.fire("Email or password are invalid", "", "error")
             }
@@ -32,24 +31,22 @@ export const userLogin = (data, history) => async dispatch => {
 
 export const addUser = (user) => async dispatch => {
 	try {
-		await fetch('http://localhost:3001/user', {
+		await fetch('http://localhost:3001/user/createuser', {
 			method: 'POST',
-			credentials: 'include',
 			body: JSON.stringify(user),
 			headers: {
-				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 		})
 			.then(data => data.json())
 			.then(res => {
 				if (res.status === 400) {
-					Swal.fire("Ups!", "El email ya esta siendo utilizado", "error")
+					Swal.fire("User already exist", "", "error")
 				} else if (res.status === 201) {
-					localStorage.setItem('user_sign', JSON.stringify(res.user))
+					localStorage.setItem('user_sign', JSON.stringify(res.newUser))
 					dispatch({
 						type: 'ADD_USER',
-						payload: res.user,
+						payload: res.newUser,
 					})
 					Swal.fire("Usuario creado con exito", "", "success")
 				}

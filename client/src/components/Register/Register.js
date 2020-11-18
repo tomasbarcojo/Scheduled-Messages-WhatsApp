@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { addUser } from '../../actions'
 import swal from 'sweetalert2'
 
 // import './Register.css'
@@ -24,7 +25,9 @@ export default function Register() {
       if (!data.name || !data.lastname || !data.email || !data.password) {
           alert('Faltan datos')
       } else {
-          history.push('/dashboard')
+          console.log(data)
+          dispatch(addUser(data))
+        //   history.push('/dashboard')
       }
   }
 
