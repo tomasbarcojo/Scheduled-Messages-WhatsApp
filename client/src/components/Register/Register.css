@@ -114,3 +114,7 @@ html, body {
   button:focus {
     outline: 0;
   }
+
+  .danger {
+    color: 'red'
+  }
