@@ -9,17 +9,15 @@ module.exports = {
         const { items } = req.body;
         try {
             let preference =  {
-                items: items //aca deben llegar los items con el formato de abajo!
-                // [
-                //     {
-                //         title: 'ojotas',
-                //         unit_price: 199,
-                //         quantity: 1,
-                //     },
-                //     {
-
-                //     }
-                // ]
+                items: 
+                // items //aca deben llegar los items con el formato de abajo!
+                [
+                    {
+                        title: 'ojotas',
+                        unit_price: 199,
+                        quantity: 1,
+                    }
+                ]
             }
             mercadopago.preferences.create(preference)
             .then(function(response){
