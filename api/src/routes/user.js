@@ -9,8 +9,6 @@ server.post('/createUser', createUser)
 
 server.post('/login', loginUser)
 
-// server.get('/logout', logoutUser)
-
 server.put('/editUser/:id', modifyUser)
 
 server.delete('/deleteUser/:id', deleteUser)
