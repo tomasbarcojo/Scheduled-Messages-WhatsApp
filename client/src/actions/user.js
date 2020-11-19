@@ -29,7 +29,7 @@ export const userLogin = (data, history) => async dispatch => {
         })
 }
 
-export const addUser = (user) => async dispatch => {
+export const addUser = (user, history) => async dispatch => {
 	try {
 		await fetch('http://localhost:3001/user/createuser', {
 			method: 'POST',
@@ -48,7 +48,8 @@ export const addUser = (user) => async dispatch => {
 						type: 'ADD_USER',
 						payload: res.newUser,
 					})
-					Swal.fire("Usuario creado con exito", "", "success")
+                    Swal.fire("Usuario creado con exito", "", "success")
+                    history.push('/')
 				}
 			})
 			.catch((error) => { console.log(error) })
@@ -76,10 +77,9 @@ export const resetPassword = (userId) => async dispatch => {
 }
 
 export const userLogout = () => async dispatch => {
-    await fetch('http://localhost:3001/logout', {
-        credentials: 'include',
-    }).then(() =>{
-        localStorage.clear()
+    await fetch('http://localhost:3001/user/logout')
+    .then(() =>{
+        // localStorage.clear()
         dispatch({
             type: 'USER_LOGOUT',
         })

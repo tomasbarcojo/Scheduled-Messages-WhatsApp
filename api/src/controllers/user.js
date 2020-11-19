@@ -112,4 +112,13 @@ module.exports = {
       }
   },
 
+  // async logoutUser(req, res) {
+  //   try {
+  //     res.send({message: 'Disconnected'})
+  //   } catch (err) {
+  //     console.log(err)
+  //     res.status(500).send(err)
+  //   }
+  // }
+
 }

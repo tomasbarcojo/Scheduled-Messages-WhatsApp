@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addUser } from '../../actions'
-
-// import './Register.css'
+import { addUser } from '../../actions/user'
+import { Link } from 'react-router-dom'
 
 export default function Register() {
   const history = useHistory()
   const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
+  const [showErr, setshowErr] = useState(false)
   const [data, setData] = useState({
       name: '',
       lastname: '',
@@ -23,22 +23,20 @@ export default function Register() {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      if (!data.name || !data.lastname || !data.email || !data.password) {
-          alert('Faltan datos')
+      if (errors.name || errors.lastname || errors.email || errors.password) {
+          setshowErr(true)
       } else {
-          console.log(data)
-          dispatch(addUser(data))
-          history.push('/')
+          dispatch(addUser(data, history))
       }
   }
 
   function validate(data) {
     let errors = {};
-    if (!data.firstName  || data.firstName.length === 0) {
+    if (!data.name  || data.name.length === 0) {
       errors.firstName = 'El nombre es requerido';
     }
 
-    if (!data.lastName || data.lastName.length === 0) {
+    if (!data.lastname || data.lastname.length === 0) {
       errors.lastName = 'El apellido es requerido';
     }
 
@@ -72,7 +70,7 @@ export default function Register() {
                         onChange={handleChange}
                         />
                     </div>
-                    {errors.firstName && (<p className='danger'>{errors.firstName}</p>)}
+                    {showErr && errors.firstName && (<p className='danger'>{errors.firstName}</p>)}
                     <div>
                         <input
                         name='lastname'
@@ -82,7 +80,7 @@ export default function Register() {
                         onChange={handleChange}
                         />
                     </div>
-                    {errors.lastName && (<p className='danger'>{errors.lastName}</p>)}
+                    {showErr && errors.lastName && (<p className='danger'>{errors.lastName}</p>)}
                     <div>
                         <input
                         name='email'
@@ -92,7 +90,7 @@ export default function Register() {
                         onChange={handleChange}
                         />
                     </div>
-                    {errors.email && (<p className='danger'>{errors.email}</p>)}
+                    {showErr && errors.email && (<p className='danger'>{errors.email}</p>)}
                     <div>
                         <input
                         name='password'
@@ -102,9 +100,14 @@ export default function Register() {
                         onChange={handleChange}
                         />
                     </div>
-                    {errors.password && (<p className='danger'>{errors.password}</p>)}
+                    {showErr && errors.password && (<p className='danger'>{errors.password}</p>)}
                     <button className='button mt-20' type="submit">Register</button>
                 </form>
+                <div className='CreateAccount mt-20'>
+                <Link to='/'>
+                    <span>I already have an account</span>
+                </Link>
+                </div>
             </div>
         </div>
   )
