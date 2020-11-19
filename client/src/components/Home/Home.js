@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from "react-redux";
-import { userLogin } from '../../actions/index'
+import { userLogin } from '../../actions/user'
 import './Home.css'
 
 export default function Home() {

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { addUser } from '../../actions/user'
 import { Link } from 'react-router-dom'
 
+import './Register.css'
+
 export default function Register() {
   const history = useHistory()
   const dispatch = useDispatch()
@@ -74,7 +76,7 @@ export default function Register() {
                     <div>
                         <input
                         name='lastname'
-                        className='Input mt-20' 
+                        className='Input mt-20'
                         type='text'
                         placeholder='Lastname'
                         onChange={handleChange}
