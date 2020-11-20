@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../components/Home/Home'
 import Register from '../components/Register/Register'
 import Dashboard from '../components/Dashboard/Dashboard'
+import MP from '../components/MercadoPago/MercadoPago'
 
 const App = () => {
   return (

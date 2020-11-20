@@ -14,7 +14,7 @@ module.exports = {
                 [
                     {
                         title: 'ojotas',
-                        unit_price: 199,
+                        unit_price: 1,
                         quantity: 1,
                     }
                 ]
