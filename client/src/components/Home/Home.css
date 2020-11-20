@@ -12,10 +12,10 @@ html, body {
     box-sizing: border-box;
   }
 
-  a {
+  /* a {
     text-decoration: none;
     color: white;
-  }
+  } */
   
   .OuterContainer {
     display: flex;
@@ -64,7 +64,7 @@ html, body {
     margin-top: 20px;
   }
 
-  .button {
+  .buttonLogIn {
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;

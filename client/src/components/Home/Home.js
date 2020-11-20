@@ -46,7 +46,7 @@ export default function Home() {
                         onChange={handleChange}
                         />
                     </div>
-                    <button className='button mt-20' type="submit">Log In</button>
+                    <button className='buttonLogIn mt-20' type="submit">Log In</button>
                 </form>
                 <div className='CreateAccount mt-20'>
                 <Link to='/register'>
