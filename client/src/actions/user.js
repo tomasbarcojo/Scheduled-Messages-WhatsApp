@@ -14,8 +14,12 @@ export const userLogin = (data, history) => async dispatch => {
             if (response.status === 401) {
                 Swal.fire("Email or password are invalid", "", "error")
             }
+            else if (response.status === 400) {
+                Swal.fire("Non-existent account, please sign in", "", "info")
+            }
             else if (response.status === 200) {
-                // localStorage.setItem('user', JSON.stringify(response.user))
+                localStorage.setItem('user', JSON.stringify(response.user))
+                localStorage.setItem('token', JSON.stringify(response.token))
                 dispatch({
                     type: 'LOGIN_USER',
                     payload: response.user,
@@ -23,19 +27,23 @@ export const userLogin = (data, history) => async dispatch => {
                 // Swal.fire("You are logged in!", "", "success")
                 history.push('/dashboard')
             }
+            else {
+                Swal.fire("Something went wrong :(", "", "error")
+            }
         })
         .catch((error) => {
             return { error: true, message: 'Error en login, intente otra vez' }
         })
 }
 
-export const addUser = (user, history) => async dispatch => {
+export const addUser = (user, token, history) => async dispatch => {
 	try {
 		await fetch('http://localhost:3001/user/createuser', {
 			method: 'POST',
 			body: JSON.stringify(user),
 			headers: {
-				'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                "auth-token": token
 			},
 		})
 			.then(data => data.json())
@@ -58,13 +66,14 @@ export const addUser = (user, history) => async dispatch => {
 	}
 }
 
-export const resetPassword = (userId) => async dispatch => {
+export const resetPassword = (userId, token) => async dispatch => {
     await fetch(`http://localhost:3001/user/${userId}/passwordReset`, {
         method: 'POST',
         credentials: 'include',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
+            "auth-token": token
         },
     })
         .then((res) => res.json())
@@ -76,10 +85,20 @@ export const resetPassword = (userId) => async dispatch => {
         )
 }
 
+// export const userLogout = () => async dispatch => {
+//         fetch('https://localhost:3001/user/logout')
+//         localStorage.clear()
+//         dispatch({
+//             type: 'USER_LOGOUT',
+//             payload: 
+//         })
+// }
+
 export const userLogout = () => async dispatch => {
-    await fetch('http://localhost:3001/user/logout')
-    .then(() =>{
-        // localStorage.clear()
+    await fetch('http://localhost:3001/user/logout', {
+        // credentials: 'include',
+    }).then(() =>{
+        localStorage.clear()
         dispatch({
             type: 'USER_LOGOUT',
         })

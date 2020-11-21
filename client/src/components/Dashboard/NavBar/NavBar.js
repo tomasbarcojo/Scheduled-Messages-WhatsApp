@@ -1,8 +1,19 @@
 import React from 'react'
 import './NavBar.css'
 import img from '../../../Images/GoogleMeet.svg'
+import { useDispatch } from 'react-redux'
+import { userLogout } from '../../../actions/user'
+import { useHistory } from 'react-router-dom'
 
 export default function NavBar() {
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const handleLogOut = () => {
+        dispatch(userLogout)
+        // history.push('/')
+    }
+
     return (
         <header>
             <img className='logo' src={img} alt='logo' />
@@ -13,7 +24,7 @@ export default function NavBar() {
                     <li><a href='#'>Profile</a></li>
                 </ul>
             </nav>
-            <a className='cta' href='#'><button className='buttonDashboard'>Log out</button></a>
+            <a className='cta' href='#'><button onClick={dispatch(userLogout)} className='buttonDashboard'>Log out</button></a>
         </header>
     )
 }

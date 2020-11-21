@@ -68,7 +68,9 @@ module.exports = {
           return res.status(400).send({ message: "Non-existent account, please sign in", status: 400 })
         }
         const validate = await bcrypt.compare(password, user.password)
-        if (!validate) return res.status(401).json({ message: 'Invalid credentials', status: 401 })
+        if (!validate) {
+          return res.status(401).json({ message: 'Invalid credentials', status: 401 })
+        }
         const token = jwt.sign({ id: user.id }, ACCESS_TOKEN_SECRET)
         res.header('auth-token', token)
         res.status(200).send({token: token, user, status: 200})
@@ -126,13 +128,13 @@ module.exports = {
       }
   },
 
-  // async logoutUser(req, res) {
-  //   try {
-  //     res.send({message: 'Disconnected'})
-  //   } catch (err) {
-  //     console.log(err)
-  //     res.status(500).send(err)
-  //   }
-  // }
+  async userLogout(req, res) {
+    try {
+      res.send({message: 'Disconnected'})
+    } catch (err) {
+      console.log(err)
+      res.status(500).send(err)
+    }
+  }
 
 }
