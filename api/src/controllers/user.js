@@ -1,5 +1,6 @@
 const { User } = require('../db.js')
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const hashPassword = (password) => new Promise((resolve, reject) => {
     bcrypt.genSalt(10, (err, salt) => {
@@ -53,23 +54,32 @@ module.exports = {
         }
     },
 
-    async loginUser(req, res) {
-      const { email, password } = req.body;
-      if (!email || !password) {
-        res.status(400).send({message: 'Data required'})
-      }
-      try {
-        const user = await User.findOne({ where: { email: email } })
-        if (!user) {
-          return res.status(400).send({ message: "Non-existent account, please sign in", status: 400 })
-        }
-        const validate = await bcrypt.compare(password, user.password)
-        if (!validate) return res.status(401).json({ message: 'Invalid credentials', status: 401 })
-        res.status(200).send({user, status: 200})
-      } catch (err) { 
-        console.log(err)
-        res.status(500).send(err)
-      }
+    // async loginUser(req, res) {
+    //   const { email, password } = req.body;
+    //   if (!email || !password) {
+    //     res.status(400).send({message: 'Data required'})
+    //   }
+    //   try {
+    //     const user = await User.findOne({ where: { email: email } })
+    //     if (!user) {
+    //       return res.status(400).send({ message: "Non-existent account, please sign in", status: 400 })
+    //     }
+    //     const validate = await bcrypt.compare(password, user.password)
+    //     if (!validate) return res.status(401).json({ message: 'Invalid credentials', status: 401 })
+    //     const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    //     res.status(200).send({user, status: 200})
+    //   } catch (err) { 
+    //     console.log(err)
+    //     res.status(500).send(err)
+    //   }
+    // },
+
+    async loginUser (req, res) {
+      const username = req.body.username
+      const user = {name: username}
+
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+      res.json({token: token})
     },
 
     async modifyUser(req, res) {
