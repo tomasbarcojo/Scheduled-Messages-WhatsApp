@@ -10,8 +10,8 @@ export default function NavBar() {
     const history = useHistory()
 
     const handleLogOut = () => {
-        dispatch(userLogout)
-        // history.push('/')
+        dispatch(userLogout())
+        history.push('/')
     }
 
     return (
@@ -24,7 +24,7 @@ export default function NavBar() {
                     <li><a href='#'>Profile</a></li>
                 </ul>
             </nav>
-            <a className='cta' href='#'><button onClick={dispatch(userLogout)} className='buttonDashboard'>Log out</button></a>
+            <a className='cta' href='#'><button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button></a>
         </header>
     )
 }

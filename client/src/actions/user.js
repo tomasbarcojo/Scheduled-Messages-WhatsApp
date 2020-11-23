@@ -36,14 +36,14 @@ export const userLogin = (data, history) => async dispatch => {
         })
 }
 
-export const addUser = (user, token, history) => async dispatch => {
+export const addUser = (user, history) => async dispatch => {
 	try {
 		await fetch('http://localhost:3001/user/createuser', {
 			method: 'POST',
 			body: JSON.stringify(user),
 			headers: {
                 'Content-Type': 'application/json',
-                "auth-token": token
+                // "auth-token": token
 			},
 		})
 			.then(data => data.json())
@@ -51,7 +51,7 @@ export const addUser = (user, token, history) => async dispatch => {
 				if (res.status === 400) {
 					Swal.fire("User already exist", "", "error")
 				} else if (res.status === 201) {
-					localStorage.setItem('user_sign', JSON.stringify(res.newUser))
+					// localStorage.setItem('user_sign', JSON.stringify(res.newUser))
 					dispatch({
 						type: 'ADD_USER',
 						payload: res.newUser,
@@ -85,18 +85,9 @@ export const resetPassword = (userId, token) => async dispatch => {
         )
 }
 
-// export const userLogout = () => async dispatch => {
-//         fetch('https://localhost:3001/user/logout')
-//         localStorage.clear()
-//         dispatch({
-//             type: 'USER_LOGOUT',
-//             payload: 
-//         })
-// }
-
 export const userLogout = () => async dispatch => {
     await fetch('http://localhost:3001/user/logout', {
-        // credentials: 'include',
+        credentials: 'include',
     }).then(() =>{
         localStorage.clear()
         dispatch({

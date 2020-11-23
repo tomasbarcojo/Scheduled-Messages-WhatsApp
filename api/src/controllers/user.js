@@ -46,7 +46,7 @@ module.exports = {
         try {
           const user = await User.findOne({ where: { email: email } })
           if (user) {
-            return res.send({ message: "User already exists", status: 400 });
+            return res.status(400).send({ message: "User already exists", status: 400 });
           }
           const userData = { name, lastname, email, password };
           const newUser = await User.create(userData)

@@ -29,8 +29,8 @@ export default function rootReducer(state = initialstate, action) {
 		case 'USER_LOGOUT':
 			return {
 				...state,
-				user: null,
-				userDetails: {},
+				user: {},
+				classes: {},
 				userLogged: false,
             }
             

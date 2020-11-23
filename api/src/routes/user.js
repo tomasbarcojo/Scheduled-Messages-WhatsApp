@@ -4,13 +4,13 @@ const { getUsers, createUser, modifyUser, deleteUser, loginUser, getOneUser, use
 
 server.get('/', /*authenticate,*/ getUsers)
 
-// server.get('/:id', /*authenticate,*/ getOneUser)
-
 server.post('/createUser', /*authenticate,*/ createUser)
 
 server.get('/logout', userLogout)
 
 server.post('/login', loginUser)
+
+server.get('/:id', /*authenticate,*/ getOneUser)
 
 server.put('/editUser/:id', /*authenticate,*/ modifyUser)
 
