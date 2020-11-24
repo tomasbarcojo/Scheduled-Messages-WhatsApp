@@ -22,8 +22,12 @@ export default function NavBar() {
                     <Link to='/dashboard'>
                     <li><button className='buttonNavBar'>About</button></li>
                     </Link>
-                    <li><a href='/addclass'>Add class</a></li>
-                    <li><a href='#'>Profile</a></li>
+                    <Link to='/addclass' >
+                    <li><button className='buttonNavBar' >Add class</button></li>
+                    </Link>
+                    <Link to='/profile' >
+                    <li><button className='buttonNavBar' >Profile</button></li>
+                    </Link>
                 </ul>
             </nav>
             <a className='cta' href='#'><button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button></a>

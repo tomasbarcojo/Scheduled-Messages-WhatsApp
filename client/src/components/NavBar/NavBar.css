@@ -36,13 +36,13 @@ header {
     padding: 0px 20px;
 }
 
-.nav_links li a {
+/* .nav_links li a {
     transition: all 0.3s ease 0s;
-}
+} */
 
-.nav_links li a:hover {
+/* .nav_links li a:hover {
     color: #0088a9;
-}
+} */
 
 .buttonDashboard {
     padding: 9px 25px;
@@ -58,15 +58,6 @@ header {
 }
 
 .buttonNavBar {
-    /* color: #fff !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #2979FF;
-    padding: 15px;
-    border-radius: 5px;
-    display: inline-block;
-    border: none;
-    width: 100%; */
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -75,4 +66,9 @@ header {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+.buttonNavBar:hover {
+    transition: all 0.3s ease 0s;
+    color: #0088a9;
 }
