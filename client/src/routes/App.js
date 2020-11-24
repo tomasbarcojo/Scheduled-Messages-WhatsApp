@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../components/Home/Home'
 import Register from '../components/Register/Register'
 import Dashboard from '../components/Dashboard/Dashboard'
-import NavBar from '../components/NavBar/NavBar'
 // import MP from '../components/MercadoPago/MercadoPago'
 import AddClass from '../components/AddClass/AddClass'
 

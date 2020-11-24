@@ -30,7 +30,7 @@ export default function NavBar() {
                     </Link>
                 </ul>
             </nav>
-            <a className='cta' href='#'><button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button></a>
+            <button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button>
         </header>
     )
 }
