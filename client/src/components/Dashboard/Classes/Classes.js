@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-// import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './Classes.css'
 
 const useStyles = makeStyles({
@@ -16,16 +16,16 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs };
+function createData(desc, date, starttime, endtime, link) {
+  return { desc, date, starttime, endtime, link };
 }
 
 const rows = [
-  createData('Test 1', '23/11/2020', '10:00', 'https://meet.google.com/swi-cnkb-cio', 4.0),
-  createData('Test 2', '24/11/2020', '11:00', 'https://meet.google.com/swi-cnkb-cio', 4.3),
-  createData('Test 3', '25/11/2020', '16:30', 'https://meet.google.com/swi-cnkb-cio', 6.0),
-  createData('Test 4', '26/11/2020', '08:15', 'https://meet.google.com/swi-cnkb-cio', 4.3),
-  createData('Test 5', '27/11/2020', '20:45', 'https://meet.google.com/swi-cnkb-cio', 3.9),
+  createData('Test 1', '23/11/2020', '10:00', '10:30', 'https://meet.google.com/swi-cnkb-cio'),
+  createData('Test 2', '24/11/2020', '11:00', '12:30', 'https://meet.google.com/swi-cnkb-cio'),
+  createData('Test 3', '25/11/2020', '16:30', '17:00', 'https://meet.google.com/swi-cnkb-cio'),
+  createData('Test 4', '26/11/2020', '08:15', '09:00', 'https://meet.google.com/swi-cnkb-cio'),
+  createData('Test 5', '27/11/2020', '20:45', '21:15', 'https://meet.google.com/swi-cnkb-cio'),
 ];
 
 export default function BasicTable() {
@@ -39,22 +39,24 @@ export default function BasicTable() {
             <TableHead>
                 <TableRow>
                     <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Description</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Date:</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Start time:</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Date</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Start time</TableCell>
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>End time</TableCell>
                     <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Link</TableCell>
-                    {/* <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Actions</TableCell> */}
+                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Actions</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
             {rows.map((row) => (
-                <TableRow key={row.name}>
+                <TableRow key={row.desc}>
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    {row.desc}
                 </TableCell>
-                <TableCell >{row.calories}</TableCell>
-                <TableCell >{row.fat}</TableCell>
-                <TableCell >{row.carbs}</TableCell>
-                {/* <TableCell >{row.protein}</TableCell> */}
+                <TableCell >{row.date}</TableCell>
+                <TableCell >{row.starttime}</TableCell>
+                <TableCell >{row.endtime}</TableCell>
+                <TableCell >{row.link}</TableCell>
+                <TableCell ><DeleteIcon /></TableCell>
                 </TableRow>
             ))}
             </TableBody>
