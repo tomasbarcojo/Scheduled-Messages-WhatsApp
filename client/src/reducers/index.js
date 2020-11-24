@@ -24,7 +24,7 @@ export default function rootReducer(state = initialstate, action) {
 		case 'RESET_PASSWORD':
 			return {
 				...state,
-				users: action.payload,
+				user: action.payload,
             }
             
 		case 'USER_LOGOUT':
@@ -41,8 +41,14 @@ export default function rootReducer(state = initialstate, action) {
 			return {
 				...state,
 				classes: action.payload,
-				userLogged: true,
 			}
+
+		case 'ADD_CLASS':
+			return {
+				...state,
+				classes: action.payload
+			}
+			
 		default:
 			return state
 	}

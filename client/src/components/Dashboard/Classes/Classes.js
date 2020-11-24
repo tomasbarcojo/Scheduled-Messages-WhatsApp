@@ -35,11 +35,14 @@ export default function BasicTable() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user)
-  console.log(user)
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     // dispatch()
-    dispatch(getClasses(user.id))
+    // dispatch(getClasses(user.id))
+
+    //testing propouses
+    dispatch(getClasses(1))
   }, [])
 
   return (

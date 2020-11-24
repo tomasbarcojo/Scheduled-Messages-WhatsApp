@@ -18,7 +18,7 @@ export const userLogin = (data, history) => async dispatch => {
                 Swal.fire("Non-existent account, please sign in", "", "info")
             }
             else if (response.status === 200) {
-                localStorage.setItem('user', JSON.stringify(response.user))
+                // localStorage.setItem('user', JSON.stringify(response.user))
                 localStorage.setItem('token', JSON.stringify(response.token))
                 dispatch({
                     type: 'LOGIN_USER',
@@ -56,7 +56,7 @@ export const addUser = (user, history) => async dispatch => {
 						type: 'ADD_USER',
 						payload: res.newUser,
 					})
-                    Swal.fire("Usuario creado con exito", "", "success")
+                    Swal.fire("User created", "", "success")
                     history.push('/')
 				}
 			})

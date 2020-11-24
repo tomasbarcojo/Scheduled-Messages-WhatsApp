@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NavBar from '../NavBar/NavBar'
 import { newClass } from '../../actions/classes'
 import './AddClass.css'
 
 export default function AddClass() {
     const dispatch = useDispatch()
+    const token = localStorage.getItem('token')
+    const user = useSelector(state => state.user)
     const [classData, setclassData] = useState({
         description: '',
         url: '',
         start: '',
         end: '',
+        userId: user.id
     })
 
-    const handleSubmit = () => {
-
-        dispatch(newClass())
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(newClass(classData, token))
     }
 
     const handleChange = (event) => {
@@ -53,7 +56,7 @@ export default function AddClass() {
                             <input
                             name='start'
                             className='Input mt-20'
-                            type='text'
+                            type='datetime-local'
                             placeholder='Start time'
                             onChange={handleChange}
                             />
@@ -63,7 +66,7 @@ export default function AddClass() {
                             <input
                             name='end'
                             className='Input mt-20' 
-                            type='password' 
+                            type='datetime-local' 
                             placeholder='End time'
                             onChange={handleChange}
                             />
