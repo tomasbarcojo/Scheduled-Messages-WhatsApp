@@ -1,10 +1,15 @@
-export const getClasses = () => async dispatch => {
-    await fetch('http://localhost:3001/logout')
-    .then(() =>{
-        localStorage.clear()
+export const getClasses = (userId) => async dispatch => {
+    await fetch(`http://localhost:3001/classes/${userId}`)
+    .then((res) => res.json())
+    .then(data => {
         dispatch({
-            type: 'USER_LOGOUT',
+            type: 'GET_CLASSES',
+            payload: data
         })
     }	
     )
+}
+
+export const newClass = () => async dispatch => {
+    await fetch('http://localhost:3001/classes/createclass')
 }

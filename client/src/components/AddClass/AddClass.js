@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import NavBar from '../NavBar/NavBar'
+import { newClass } from '../../actions/classes'
 import './AddClass.css'
 
 export default function AddClass() {
+    const dispatch = useDispatch()
     const [classData, setclassData] = useState({
         description: '',
         url: '',
@@ -12,6 +15,7 @@ export default function AddClass() {
 
     const handleSubmit = () => {
 
+        dispatch(newClass())
     }
 
     const handleChange = (event) => {
@@ -22,7 +26,7 @@ export default function AddClass() {
         <div>
             <NavBar />
             <div className='OuterContainerNavBar'>
-                <div className='InnerContainerNavBar'>
+                <div className='InnerContainerNavBar shadow'>
                 <h1>Add new class</h1>
                     <form onSubmit={handleSubmit} noValidate>
                         <div>

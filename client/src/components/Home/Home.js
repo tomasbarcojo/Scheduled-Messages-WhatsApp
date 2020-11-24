@@ -31,7 +31,7 @@ export default function Home() {
                     <div>
                         <input
                         name='email'
-                        className='Input' 
+                        className='Input mt-20' 
                         type='text'
                         placeholder='Email'
                         onChange={handleChange}

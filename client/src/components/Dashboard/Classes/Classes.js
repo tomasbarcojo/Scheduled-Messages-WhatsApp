@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from 'react-redux'
+import { getClasses } from '../../../actions/classes'
+import {  } from '../../../actions/user'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -30,6 +33,14 @@ const rows = [
 
 export default function BasicTable() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
+  console.log(user)
+
+  useEffect(() => {
+    // dispatch()
+    dispatch(getClasses(user.id))
+  }, [])
 
   return (
       <div className='tableContainer shadow'>

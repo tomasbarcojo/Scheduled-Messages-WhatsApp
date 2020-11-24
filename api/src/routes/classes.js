@@ -1,7 +1,7 @@
 const server = require('express').Router()
 const { getClasses, createClass, modifyClass, deleteClass } = require('../controllers/classes')
 
-server.get('/', getClasses)
+server.get('/:userId', getClasses)
 
 server.post('/createClass', createClass)
 
