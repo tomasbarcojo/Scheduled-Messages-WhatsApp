@@ -19,18 +19,6 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(desc, date, starttime, endtime, link) {
-  return { desc, date, starttime, endtime, link };
-}
-
-const rows = [
-  createData('Test 1', '23/11/2020', '10:00', '10:30', 'https://meet.google.com/swi-cnkb-cio'),
-  createData('Test 2', '24/11/2020', '11:00', '12:30', 'https://meet.google.com/swi-cnkb-cio'),
-  createData('Test 3', '25/11/2020', '16:30', '17:00', 'https://meet.google.com/swi-cnkb-cio'),
-  createData('Test 4', '26/11/2020', '08:15', '09:00', 'https://meet.google.com/swi-cnkb-cio'),
-  createData('Test 5', '27/11/2020', '20:45', '21:15', 'https://meet.google.com/swi-cnkb-cio'),
-];
-
 export default function BasicTable() {
   const classes = useStyles();
   const listClasses = useSelector(state => state.classes)
@@ -38,7 +26,7 @@ export default function BasicTable() {
   return (
 
       <div className='tableContainer shadow'>
-          <h2>Next class:</h2>
+          <h2>Up next classes:</h2>
         <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
             <TableHead>
@@ -52,18 +40,18 @@ export default function BasicTable() {
                 </TableRow>
             </TableHead>
             <TableBody>
-            {listClasses && listClasses.map((row) => (
+            {listClasses ?
+            listClasses.map((row) => (
                 <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
-                    {row.description}
-                </TableCell>
-                <TableCell >{row.start}</TableCell>
-                <TableCell >{row.start}</TableCell>
-                <TableCell >{row.end}</TableCell>
+                <TableCell >{row.description}</TableCell>
+                <TableCell >{row.start.split('T')[0]}</TableCell>
+                <TableCell >{row.start.split('T')[1]}</TableCell>
+                <TableCell >{row.end.split('T')[1]}</TableCell>
                 <TableCell >{row.url}</TableCell>
                 <TableCell ><DeleteIcon /></TableCell>
                 </TableRow>
-            ))}
+            ))
+          : null}
             </TableBody>
         </Table>
         </TableContainer>
