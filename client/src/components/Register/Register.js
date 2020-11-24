@@ -103,7 +103,7 @@ export default function Register() {
                         />
                     </div>
                     {showErr && errors.password && (<p className='danger'>{errors.password}</p>)}
-                    <button className='button mt-20' type="submit">Register</button>
+                    <button className='buttonRegister mt-20' type="submit">Register</button>
                 </form>
                 <div className='CreateAccount mt-20'>
                 <Link to='/'>
