@@ -7,7 +7,7 @@ export const getClasses = (userId, token) => async dispatch => {
     })
         .then((res) => res.json())
         .then(data => {
-            if (data.status === 201) {
+            if (data && data.length !== 0) {
                 dispatch({
                     type: 'GET_CLASSES',
                     payload: data

@@ -33,19 +33,10 @@ const rows = [
 
 export default function BasicTable() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
-  const token = localStorage.getItem('token')
-
-  useEffect(() => {
-    // dispatch()
-    // dispatch(getClasses(user.id))
-
-    //testing propouses
-    dispatch(getClasses(1))
-  }, [])
+  const listClasses = useSelector(state => state.classes)
 
   return (
+
       <div className='tableContainer shadow'>
           <h2>Next class:</h2>
         <TableContainer component={Paper}>
@@ -61,15 +52,15 @@ export default function BasicTable() {
                 </TableRow>
             </TableHead>
             <TableBody>
-            {rows.map((row) => (
-                <TableRow key={row.desc}>
+            {listClasses && listClasses.map((row) => (
+                <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                    {row.desc}
+                    {row.description}
                 </TableCell>
-                <TableCell >{row.date}</TableCell>
-                <TableCell >{row.starttime}</TableCell>
-                <TableCell >{row.endtime}</TableCell>
-                <TableCell >{row.link}</TableCell>
+                <TableCell >{row.start}</TableCell>
+                <TableCell >{row.start}</TableCell>
+                <TableCell >{row.end}</TableCell>
+                <TableCell >{row.url}</TableCell>
                 <TableCell ><DeleteIcon /></TableCell>
                 </TableRow>
             ))}
