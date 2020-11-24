@@ -1,9 +1,9 @@
 import React from 'react'
 import './NavBar.css'
-import img from '../../../Images/GoogleMeet.svg'
+import img from '../../Images/GoogleMeet.svg'
 import { useDispatch } from 'react-redux'
-import { userLogout } from '../../../actions/user'
-import { useHistory } from 'react-router-dom'
+import { userLogout } from '../../actions/user'
+import { useHistory, Link } from 'react-router-dom'
 
 export default function NavBar() {
     const dispatch = useDispatch()
@@ -19,8 +19,10 @@ export default function NavBar() {
             <img className='logo' src={img} alt='logo' />
             <nav>
                 <ul className='nav_links'>
-                    <li><a href='#'>About</a></li>
-                    <li><a href='#'>Add class</a></li>
+                    <Link to='/dashboard'>
+                    <li><button className='buttonNavBar'>About</button></li>
+                    </Link>
+                    <li><a href='/addclass'>Add class</a></li>
                     <li><a href='#'>Profile</a></li>
                 </ul>
             </nav>

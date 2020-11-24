@@ -56,3 +56,23 @@ header {
 .buttonDashboard:hover {
     background-color: rgba(0, 136, 196, 1);
 }
+
+.buttonNavBar {
+    /* color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2979FF;
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    width: 100%; */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
