@@ -13,7 +13,14 @@ export default function rootReducer(state = initialstate, action) {
 				...state,
 				user: action.payload,
 				userLogged: true,
-            }
+			}
+			
+		case 'SET_USER':
+			return {
+				...state,
+				user: action.payload,
+				userLogged: true
+			}
 
 		case 'ADD_USER':
 			return {
@@ -46,7 +53,7 @@ export default function rootReducer(state = initialstate, action) {
 		case 'ADD_CLASS':
 			return {
 				...state,
-				classes: action.payload
+				classes: [...state.classes, action.payload]
 			}
 			
 		default:

@@ -4,17 +4,19 @@ import NavBar from '../NavBar/NavBar'
 import Classes from './Classes/Classes'
 import { useDispatch, useSelector } from 'react-redux'
 import { getClasses } from '../../actions/classes'
-import { getUser } from '../../actions/user'
+import { useLocation } from 'react-router-dom'
 
 export default function Dashboard() {
+    const url = useLocation()
     const dispatch = useDispatch();
     const token = localStorage.getItem('token')
-    const user = localStorage.getItem('userData')
+    const user = useSelector(state => state.user)
+
+    console.log(user)
 
     useEffect(() => {
-        dispatch(getUser(user.id, token))
-        dispatch(getClasses(user.id, token))
-      }, [])
+        dispatch(getClasses(1, token))
+      }, [url.pathname])
 
     return (
         <div>

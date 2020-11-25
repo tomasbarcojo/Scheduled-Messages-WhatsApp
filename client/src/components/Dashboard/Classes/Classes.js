@@ -38,7 +38,7 @@ export default function BasicTable() {
                 </TableRow>
             </TableHead>
             <TableBody>
-            {listClasses && listClasses.lenght !== 0 ?
+            {listClasses ?
             listClasses.map((row) => (
                 <TableRow key={row.id}>
                 <TableCell >{row.description}</TableCell>

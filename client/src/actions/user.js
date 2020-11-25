@@ -99,12 +99,15 @@ export const userLogout = () => async dispatch => {
 
 export const getUser = (userId, token) => async dispatch => {
     await fetch(`http://localhost:3001/user/${userId}`, {
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
             "auth-token": token
         },
-    }).then((user) =>{
+    })
+    .then((res) => res.json())
+    .then((user) =>{
+        console.log(user)
         dispatch({
             type: 'SET_USER',
             payload: user,
