@@ -18,7 +18,7 @@ export const userLogin = (data, history) => async dispatch => {
                 Swal.fire("Non-existent account, please sign in", "", "info")
             }
             else if (response.status === 200) {
-                // localStorage.setItem('user', JSON.stringify(response.user))
+                localStorage.setItem('userData', JSON.stringify(response.user))
                 localStorage.setItem('token', JSON.stringify(response.token))
                 dispatch({
                     type: 'LOGIN_USER',
@@ -51,7 +51,7 @@ export const addUser = (user, history) => async dispatch => {
 				if (res.status === 400) {
 					Swal.fire("User already exist", "", "error")
 				} else if (res.status === 201) {
-					// localStorage.setItem('user_sign', JSON.stringify(res.newUser))
+					localStorage.setItem('userData', JSON.stringify(res.newUser))
 					dispatch({
 						type: 'ADD_USER',
 						payload: res.newUser,
@@ -92,6 +92,22 @@ export const userLogout = () => async dispatch => {
         localStorage.clear()
         dispatch({
             type: 'USER_LOGOUT',
+        })
+    }	
+    )
+}
+
+export const getUser = (userId, token) => async dispatch => {
+    await fetch(`http://localhost:3001/user/${userId}`, {
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            "auth-token": token
+        },
+    }).then((user) =>{
+        dispatch({
+            type: 'SET_USER',
+            payload: user,
         })
     }	
     )

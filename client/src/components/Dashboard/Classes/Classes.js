@@ -38,13 +38,13 @@ export default function BasicTable() {
                 </TableRow>
             </TableHead>
             <TableBody>
-            {listClasses ?
+            {listClasses && listClasses.lenght !== 0 ?
             listClasses.map((row) => (
                 <TableRow key={row.id}>
                 <TableCell >{row.description}</TableCell>
                 <TableCell >{row.start.split('T')[0]}</TableCell>
-                <TableCell >{row.start.split('T')[1]}</TableCell>
-                <TableCell >{row.end.split('T')[1]}</TableCell>
+                <TableCell >{row.start.split('T')[1]} hs</TableCell>
+                <TableCell >{row.end.split('T')[1]} hs</TableCell>
                 <TableCell >{row.url}</TableCell>
                 <TableCell ><DeleteIcon /></TableCell>
                 </TableRow>

@@ -4,10 +4,19 @@ import Register from '../components/Register/Register'
 import Dashboard from '../components/Dashboard/Dashboard'
 // import MP from '../components/MercadoPago/MercadoPago'
 import AddClass from '../components/AddClass/AddClass'
+import { getUser } from '../actions/user'
+import { useDispatch } from 'react-redux'
 
 const App = () => {
+  const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('userData'))
+  const token = JSON.parse(localStorage.getItem('token'))
+
+  if (user) {
+    dispatch(getUser(user.id, token))
+  }
+
   return (
-    <div>
     <Router>
         <Switch>
             <Route exact path="/" component={Home} />
@@ -17,7 +26,6 @@ const App = () => {
             {/* <Route exact path="/mercadopago" component={MP} /> */}
         </Switch>
     </Router>
-    </div>
   );
 }
 
