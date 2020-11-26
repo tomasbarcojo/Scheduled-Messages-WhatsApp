@@ -3,6 +3,7 @@ const { Router } = require('express');
 const classesRouter = require('./classes');
 const classesUser = require('./user')
 const classesMP = require('./mercadopago')
+const startClass = require('./startClass')
 
 const router = Router();
 
@@ -12,5 +13,6 @@ const router = Router();
 router.use('/classes', classesRouter);
 router.use('/user', classesUser);
 router.use('/mp', classesMP);
+router.use('/startclass', startClass);
 
 module.exports = router;
