@@ -11,7 +11,6 @@ export default function NavBar() {
 
     const handleLogOut = () => {
         dispatch(userLogout())
-        history.push('/')
     }
 
     return (
@@ -30,7 +29,9 @@ export default function NavBar() {
                     </Link>
                 </ul>
             </nav>
-            <button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button>
+            <Link to='/'>
+                <button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button>
+            </Link>
         </header>
     )
 }
