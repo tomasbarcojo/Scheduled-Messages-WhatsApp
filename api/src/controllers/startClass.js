@@ -1,6 +1,6 @@
 require('dotenv').config()
 const GoogleMeet = require('../google-meet')
-googleMeetFunction = new GoogleMeet(process.env.EMAIL, process.env.PASSWORD, true, true)
+googleMeetFunction = new GoogleMeet(true, true)
 
 module.exports = {
     async startClass (req, res) {

@@ -1,15 +1,18 @@
-require('dotenv').config();
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const puppeteer = require('puppeteer-extra')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 puppeteer.use(StealthPlugin())
 
+const { EMAIL, PASSWORD } = process.env
+
 class GoogleMeet {
-    constructor(email, pass, head, strict) {
-        this.email = process.env.EMAIL;
-        this.pass = process.env.PASSWORD;
+    constructor(head, strict) {
+        this.email = EMAIL;
+        this.pass = PASSWORD;
         this.head = head;
-        this.strict = true;
+        this.strict = strict;
         this.browser;
         this.page;
     }
@@ -93,5 +96,6 @@ class GoogleMeet {
 }
 
 module.exports = GoogleMeet
+
 // const test = new GoogleMeet()
 // test.schedule('https://meet.google.com/tza-ezxn-wod')
