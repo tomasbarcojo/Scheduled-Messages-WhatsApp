@@ -1,16 +1,26 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from '../../actions/user'
 import './Home.css'
 
 export default function Home() {
     const dispatch = useDispatch()
+    const isLogged = useSelector(state => state.userLogged)
     const history = useHistory()
     const [data, setData] = useState ({
         email: '',
         password: '',
     })
+
+    
+    // useEffect(() => {
+        if (isLogged) {
+            // console.log(isLogged)
+            // console.log('entro al ifff paaaaaa')
+            history.push('/dashboard')
+        }
+    // }, [isLogged])
 
 
     const handleChange = (event) => {

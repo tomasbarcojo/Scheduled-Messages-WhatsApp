@@ -5,12 +5,12 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 puppeteer.use(StealthPlugin())
 
-const { EMAIL, PASSWORD } = process.env
+const { GMEMAIL, GMPASSWORD } = process.env
 
 class GoogleMeet {
     constructor(head, strict) {
-        this.email = EMAIL;
-        this.pass = PASSWORD;
+        this.email = GMEMAIL;
+        this.pass = GMPASSWORD;
         this.head = head;
         this.strict = strict;
         this.browser;
