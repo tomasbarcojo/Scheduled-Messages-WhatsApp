@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,37 +23,54 @@ export default function BasicTable() {
   const listClasses = useSelector(state => state.classes)
 
   return (
+    <div>
+      {
+        listClasses && listClasses.length !== 0 ?
+          <>
+            <div className='tableContainer shadow'>
+            <h2>Up next classes:</h2>
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>Description</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>Date</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>Start time</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>End time</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>Link</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {
+                    listClasses.map((row) => (
+                      <TableRow key={row.id}>
+                        <TableCell >{row.description}</TableCell>
+                        <TableCell >{row.start.split('T')[0]}</TableCell>
+                        <TableCell >{row.start.split('T')[1]} hs</TableCell>
+                        <TableCell >{row.end.split('T')[1]} hs</TableCell>
+                        <TableCell >{row.url}</TableCell>
+                        <TableCell ><DeleteIcon /></TableCell>
+                      </TableRow>
+                    ))
+                  }
+                </TableBody>
+              </Table>
+            </TableContainer>
+            </div>
+          </>
 
-      <div className='tableContainer shadow'>
-          <h2>Up next classes:</h2>
-        <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-                <TableRow>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Description</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Date</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Start time</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>End time</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Link</TableCell>
-                    <TableCell style={{fontWeight: 'bold', fontSize: '16px'}}>Actions</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-            {listClasses ?
-            listClasses.map((row) => (
-                <TableRow key={row.id}>
-                <TableCell >{row.description}</TableCell>
-                <TableCell >{row.start.split('T')[0]}</TableCell>
-                <TableCell >{row.start.split('T')[1]} hs</TableCell>
-                <TableCell >{row.end.split('T')[1]} hs</TableCell>
-                <TableCell >{row.url}</TableCell>
-                <TableCell ><DeleteIcon /></TableCell>
-                </TableRow>
-            ))
-          : null}
-            </TableBody>
-        </Table>
-        </TableContainer>
-      </div>
+          : // ELSE
+          
+          <>
+            <div className='addClassContainer'>
+              <h2>Add your first class!</h2>
+              <Link to='/addclass'>
+                  <button className='buttonDashboard mt-20'>Add class</button>
+              </Link>
+            </div>
+          </>
+      }
+    </div>
   );
 }
