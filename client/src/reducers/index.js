@@ -38,7 +38,7 @@ export default function rootReducer(state = initialstate, action) {
 			return {
 				...state,
 				user: {},
-				classes: {},
+				classes: [],
 				userLogged: false,
 			}
 			

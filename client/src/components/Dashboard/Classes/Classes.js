@@ -43,7 +43,7 @@ export default function BasicTable() {
                 </TableHead>
                 <TableBody>
                   {
-                    listClasses.map((row) => (
+                    listClasses.length !== 0 && listClasses.map((row) => (
                       <TableRow key={row.id}>
                         <TableCell >{row.description}</TableCell>
                         <TableCell >{row.start.split('T')[0]}</TableCell>

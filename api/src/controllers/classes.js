@@ -26,7 +26,7 @@ module.exports = {
             res.status(400).send({message: "All data are required"})
         }
         try {
-            const classData = { description, url, start, end, userId }
+            const classData = { description, url, start, userId }
             const newClass = await Classes.create(classData)
             res.status(201).send({newClass, status: 201})
         } catch (err) {
