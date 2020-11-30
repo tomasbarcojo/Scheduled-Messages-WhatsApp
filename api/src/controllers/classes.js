@@ -21,8 +21,8 @@ module.exports = {
     },
 
     async createClass(req, res) {
-        const { description, url, start, end, userId } = req.body
-        if (!description || !url || !start || !end) {
+        const { description, url, start, userId } = req.body
+        if (!description || !url || !start) {
             res.status(400).send({message: "All data are required"})
         }
         try {
