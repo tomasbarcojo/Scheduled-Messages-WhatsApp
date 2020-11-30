@@ -32,40 +32,44 @@ export default function AddClass() {
                 <div className='InnerContainerNavBar shadow'>
                 <h1>Add new class</h1>
                     <form onSubmit={handleSubmit} noValidate>
-                        <div>
+                        <div className='dataRow mt-20'>
+                            <p>Description:</p>
                             <input
                             name='description'
-                            className='Input' 
+                            className='Input'
                             type='text'
                             placeholder='Description'
                             onChange={handleChange}
                             />
                         </div>
                         {/* {showErr && errors.firstName && (<p className='danger'>{errors.firstName}</p>)} */}
-                        <div>
+                        <div className='dataRow'>
+                            <p>Url:</p>
                             <input
                             name='url'
-                            className='Input mt-20'
+                            className='Input'
                             type='text'
                             placeholder='URL'
                             onChange={handleChange}
                             />
                         </div>
                         {/* {showErr && errors.lastName && (<p className='danger'>{errors.lastName}</p>)} */}
-                        <div>
+                        <div className='dataRow'>
+                            <p>Starting day and time:</p>
                             <input
                             name='start'
-                            className='Input mt-20'
+                            className='Input'
                             type='datetime-local'
                             placeholder='Start time'
                             onChange={handleChange}
                             />
                         </div>
                         {/* {showErr && errors.email && (<p className='danger'>{errors.email}</p>)} */}
-                        <div>
+                        <div className='dataRow'>
+                            <p>Test:</p>
                             <input
                             name='end'
-                            className='Input mt-20' 
+                            className='Input' 
                             type='datetime-local' 
                             placeholder='End time'
                             onChange={handleChange}

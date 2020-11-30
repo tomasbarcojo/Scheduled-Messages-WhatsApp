@@ -11,3 +11,25 @@
     margin: 10px;
     width: 100vh;
 }
+
+.dataRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.dataRow p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.dataRow input {
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    margin-top: -5px; /*because Input on Home.css has 5px*/
+}

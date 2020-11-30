@@ -64,7 +64,7 @@ export default function BasicTable() {
           
           <>
             <div className='addClassContainer'>
-              <h2>Add your first class!</h2>
+              <h1>Add your first class!</h1>
               <Link to='/addclass'>
                   <button className='buttonDashboard mt-20'>Add class</button>
               </Link>
