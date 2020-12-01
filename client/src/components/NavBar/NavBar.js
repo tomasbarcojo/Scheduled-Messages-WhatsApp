@@ -29,9 +29,9 @@ export default function NavBar() {
                     </Link>
                 </ul>
             </nav>
-            <Link to='/'>
+            {/* <Link to='/'> */}
                 <button onClick={e => handleLogOut()} className='buttonDashboard'>Log out</button>
-            </Link>
+            {/* </Link> */}
         </header>
     )
 }
