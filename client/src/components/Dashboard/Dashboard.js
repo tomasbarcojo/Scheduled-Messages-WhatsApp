@@ -16,7 +16,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         dispatch(getClasses(user.id, token))
-      }, [url.pathname])
+      }, [ user])
 
     return (
         <div>
