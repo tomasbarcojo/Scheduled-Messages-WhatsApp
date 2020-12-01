@@ -10,7 +10,7 @@ export default function NavBar() {
     const history = useHistory()
 
     const handleLogOut = () => {
-        dispatch(userLogout())
+        dispatch(userLogout(history))
     }
 
     return (

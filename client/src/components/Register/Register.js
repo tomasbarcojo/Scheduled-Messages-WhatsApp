@@ -66,7 +66,7 @@ export default function Register() {
                     <div>
                         <input
                         name='name'
-                        className='Input' 
+                        className='Input mt-20' 
                         type='text'
                         placeholder='Name'
                         onChange={handleChange}

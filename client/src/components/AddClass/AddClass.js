@@ -21,6 +21,10 @@ export default function AddClass() {
         dispatch(newClass(classData, token))
     }
 
+    const resetForm = () => {
+
+    }
+
     const handleChange = (event) => {
         setclassData({...classData, [event.target.name]: event.target.value})
     }
@@ -66,7 +70,7 @@ export default function AddClass() {
                         </div>
                         {/* {showErr && errors.email && (<p className='danger'>{errors.email}</p>)} */}
                         <div className='dataRow'>
-                            <p>Test:</p>
+                            <p>End time:</p>
                             <input
                             name='end'
                             className='Input' 

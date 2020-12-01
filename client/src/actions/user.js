@@ -85,7 +85,7 @@ export const resetPassword = (userId, token) => async dispatch => {
         )
 }
 
-export const userLogout = () => async dispatch => {
+export const userLogout = (history) => async dispatch => {
     await fetch('http://localhost:3001/user/logout', {
         credentials: 'include',
     }).then(() =>{
@@ -93,7 +93,8 @@ export const userLogout = () => async dispatch => {
         dispatch({
             type: 'USER_LOGOUT',
         })
-    }	
+        history.push('/')
+    }
     )
 }
 

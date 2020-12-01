@@ -21,12 +21,12 @@ module.exports = {
     },
 
     async createClass(req, res) {
-        const { description, url, start, userId } = req.body
+        const { description, url, start, end, userId } = req.body
         if (!description || !url || !start) {
             res.status(400).send({message: "All data are required"})
         }
         try {
-            const classData = { description, url, start, userId }
+            const classData = { description, url, start, end, userId }
             const newClass = await Classes.create(classData)
             res.status(201).send({newClass, status: 201})
         } catch (err) {
