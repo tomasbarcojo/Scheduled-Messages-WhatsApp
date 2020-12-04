@@ -1,7 +1,8 @@
 const initialstate = {
 	user: {},
     classes: [],
-	userLogged: false
+	userLogged: false,
+	onClass: false
 }
 
 export default function rootReducer(state = initialstate, action) {
@@ -54,6 +55,12 @@ export default function rootReducer(state = initialstate, action) {
 			return {
 				...state,
 				classes: [...state.classes, action.payload]
+			}
+
+		case 'START_CLASS':
+			return {
+				...state,
+				onClass: true
 			}
 			
 		default:

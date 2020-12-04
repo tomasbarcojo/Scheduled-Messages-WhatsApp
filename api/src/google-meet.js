@@ -46,7 +46,9 @@ class GoogleMeet {
 
             await this.page.waitForTimeout(4000)
 
-            await this.page.goto(url)
+            console.log(url)
+
+            await this.page.goto(url.url)
 
             console.log("inside meet page")
 

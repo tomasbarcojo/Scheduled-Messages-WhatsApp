@@ -38,3 +38,23 @@ export const newClass = (dataClass, token) => async dispatch => {
         }
     })
 }
+
+export const startClass = (url, token) => async dispatch => {
+    await fetch('http://localhost:3001/startclass', {
+        method: 'POST',
+        body: JSON.stringify(url),
+        headers: {
+            'Content-Type': 'application/json',
+            "auth-token": token
+        },
+    })
+    .then(data => data.json())
+    .then(res => {
+        if (res.status === 201) {
+            dispatch({
+                type: 'START_CLASS',
+                payload: res.newClass
+            })
+        }
+    })
+}

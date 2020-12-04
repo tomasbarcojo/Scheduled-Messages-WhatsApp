@@ -5,16 +5,36 @@ import Dashboard from '../components/Dashboard/Dashboard'
 // import MP from '../components/MercadoPago/MercadoPago'
 import AddClass from '../components/AddClass/AddClass'
 import { getUser } from '../actions/user'
+import { startClass } from '../actions/classes'
 import { useDispatch, useSelector } from 'react-redux'
 
 const App = () => {
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('userData'))
   const token = JSON.parse(localStorage.getItem('token'))
+  const listClasses = useSelector(state => state.classes)
 
   if (user) {
     dispatch(getUser(user.id, token))
   }
+
+  setInterval(() => {
+    if (listClasses) {
+      for (var i = 0; i < listClasses.length; i++) {
+          if (Date.parse(listClasses[i].start) < Date.now()) {
+              console.log(`Request for joining meet ${listClasses[i].url}`);
+              dispatch(startClass(listClasses[i].url))
+              // listClasses[i].start = listClasses[i].endTime + 2000;
+          }
+    //       if (Date.parse(listClasses[i].end) < Date.now()) {
+    //           console.log(`Request for leaving meet ${listClasses[i].url}`);
+    //           obj.end();
+    //           // delete listClasses[x]
+    //       }
+      }
+    }
+    console.log('Set interval ejecutado')
+  }, 1000)
 
   return (
     <Router>

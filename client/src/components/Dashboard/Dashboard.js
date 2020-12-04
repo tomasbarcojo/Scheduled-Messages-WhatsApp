@@ -12,11 +12,9 @@ export default function Dashboard() {
     const token = localStorage.getItem('token')
     const user = useSelector(state => state.user)
 
-    console.log(user)
-
     useEffect(() => {
         dispatch(getClasses(user.id, token))
-      }, [ user])
+      }, [url.pathname])
 
     return (
         <div>

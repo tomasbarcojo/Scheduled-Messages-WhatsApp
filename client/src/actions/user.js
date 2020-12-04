@@ -108,7 +108,6 @@ export const getUser = (userId, token) => async dispatch => {
     })
     .then((res) => res.json())
     .then((user) =>{
-        console.log(user)
         dispatch({
             type: 'SET_USER',
             payload: user,
