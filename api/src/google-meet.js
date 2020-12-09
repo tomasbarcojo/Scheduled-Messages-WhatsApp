@@ -79,7 +79,7 @@ class GoogleMeet {
                 console.log ("all set!!")
             }
 
-            await this.page.waitForTimeout(1000)
+            await this.page.waitForTimeout(3000)
 
             console.log('clicking on join')
             

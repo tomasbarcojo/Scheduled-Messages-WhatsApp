@@ -18,6 +18,9 @@ export default function Timer() {
     return (
         <div>
             <h1>{time}</h1>
+            { time === '10:13:59' ?
+            alert('es la hora')
+        : null}
         </div>
     )
 }
