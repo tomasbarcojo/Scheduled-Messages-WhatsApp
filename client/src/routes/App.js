@@ -36,6 +36,13 @@ const App = () => {
   //   }
   //   console.log('Set interval ejecutado')
   // }, 1000)
+  
+  if (listClasses) {
+    var arr = []
+    console.log(listClasses)
+    const next = listClasses.find(el => el.start.split('T')[0] === '2020-12-10')
+    console.log(next)
+  }
 
   return (
     <Router>
