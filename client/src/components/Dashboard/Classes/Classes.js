@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIconClass from '../../DeleteIconClass/DeleteIconClass'
 import './Classes.css'
 
 const useStyles = makeStyles({
@@ -50,7 +50,7 @@ export default function BasicTable() {
                         <TableCell >{row.start.split('T')[1]} hs</TableCell>
                         <TableCell >{row.end.split('T')[1]} hs</TableCell>
                         <TableCell >{row.url}</TableCell>
-                        <TableCell ><DeleteIcon /></TableCell>
+                        <TableCell ><DeleteIconClass idClass={row.id}/></TableCell>
                       </TableRow>
                     ))
                   }

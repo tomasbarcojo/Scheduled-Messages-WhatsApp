@@ -44,10 +44,19 @@ module.exports = {
     },
 
     async deleteClass(req, res) {
-        try {
-
-        } catch {
-
+        try { 
+            const deleteClass = await Classes.findByPk(req.params.id)
+            if (deleteClass) {
+                deleteClass.destroy()
+                .then(() => {
+                    res.status(200).send(deleteClass)
+                })
+            } else {
+                res.status(404).send('No se pudo eliminar, la clase no fue encontrada')
+            }
+        } catch (err) {
+            console.log(err)
+            res.status(400).send({ message: 'Failed to delete class' })
         }
     },
 }

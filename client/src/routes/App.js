@@ -38,10 +38,13 @@ const App = () => {
   // }, 1000)
   
   if (listClasses) {
-    var arr = []
-    console.log(listClasses)
-    const next = listClasses.find(el => el.start.split('T')[0] === '2020-12-10')
-    console.log(next)
+    // setInterval(() => {
+    //   for (var i = 0; i < listClasses.length; i++) {
+    //     if (Date.parse(listClasses[i].start) < Date.now()) {
+    //       alert(listClasses[i].start)
+    //     }
+    //   }
+    // })
   }
 
   return (

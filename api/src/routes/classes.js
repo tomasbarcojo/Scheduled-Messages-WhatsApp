@@ -7,6 +7,6 @@ server.post('/createClass', createClass)
 
 server.put('/editClass', modifyClass)
 
-server.delete('/deleteClass', deleteClass)
+server.delete('/deleteClass/:id', deleteClass)
 
 module.exports = server

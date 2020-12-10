@@ -62,6 +62,14 @@ export default function rootReducer(state = initialstate, action) {
 				...state,
 				onClass: true
 			}
+
+		case 'REMOVE_CLASS':
+			return {
+				...state,
+				classes: state.classes.filter(
+					(classFilter) => classFilter.id !== action.payload
+				),
+			}
 			
 		default:
 			return state

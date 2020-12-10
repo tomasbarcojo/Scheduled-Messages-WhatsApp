@@ -58,3 +58,17 @@ export const startClass = (url, token) => async dispatch => {
         }
     })
 }
+
+export const removeClass = (idClass, token) => async dispatch => {
+    await fetch(`http://localhost:3001/classes/deleteclass/${idClass}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "auth-token": token
+        }
+    })
+    dispatch({
+        type: 'REMOVE_CLASS',
+        payload: idClass
+    })
+}
