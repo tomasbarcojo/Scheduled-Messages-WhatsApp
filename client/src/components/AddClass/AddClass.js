@@ -35,19 +35,23 @@ export default function AddClass() {
         userId: user.id
     })
 
+    console.log(user.id)
+
     
     const resetForm = () => {
         setclassData({
             description: '',
             url: '',
             start: '',
-            end: ''
+            end: '',
+            userId: user.id
         })
     }
     
     const handleSubmit = (e) => {
         e.preventDefault()
         if (classData.description && classData.url && classData.start && classData.end) {
+            
             dispatch(newClass(classData, token))
             setOpenSuccess(true); //to open the success message
             resetForm()
