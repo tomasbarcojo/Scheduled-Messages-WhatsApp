@@ -14,7 +14,7 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('userData'))
   const token = JSON.parse(localStorage.getItem('token'))
   const listClasses = useSelector(state => state.classes)
-  const nextClass = ''
+  var nextClass = ''
 
   if (user) {
     dispatch(getUser(user.id, token))

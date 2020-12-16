@@ -4,21 +4,21 @@ import NavBar from '../NavBar/NavBar'
 import { newClass } from '../../actions/classes'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import './AddClass.css'
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
   
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      '& > * + *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-  }));
+//   const useStyles = makeStyles((theme) => ({
+//     root: {
+//       width: '100%',
+//       '& > * + *': {
+//         marginTop: theme.spacing(2),
+//       },
+//     },
+//   }));
 
 export default function AddClass() {
     const dispatch = useDispatch()
@@ -26,7 +26,7 @@ export default function AddClass() {
     const user = useSelector(state => state.user)
     const [openSuccess, setOpenSuccess] = useState(false);
     const [openError, setOpenError] = useState(false);
-    const classes = useStyles();
+    // const classes = useStyles();
     const [classData, setclassData] = useState({
         description: '',
         url: '',
@@ -34,9 +34,6 @@ export default function AddClass() {
         end: '',
         userId: user.id
     })
-
-    console.log(user.id)
-
     
     const resetForm = () => {
         setclassData({
