@@ -14,7 +14,7 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('userData'))
   const token = JSON.parse(localStorage.getItem('token'))
   const listClasses = useSelector(state => state.classes)
-  var nextClass = ''
+  let nextClassArr = []
 
   if (user) {
     dispatch(getUser(user.id, token))
@@ -39,22 +39,16 @@ const App = () => {
   // }, 1000)
   
   if (listClasses && listClasses.length !== 0) {
-    // var auxClass = listClasses[0].start
     for (var i = 0; i < listClasses.length; i++) {
-      if (Date.parse(listClasses[i].start) >= Date.now()) { //&& Date.parse(listClasses[i].start) > Date.parse(auxClass)
-        nextClass = listClasses[i].start
-        console.log('PROXIMA CLASE:', nextClass)
+        let classObj = {}
+        classObj.start = Date.parse(listClasses[i].start)
+        classObj.url = listClasses[i].url
+        nextClassArr.push(classObj)
       }
+      nextClassArr.sort((a, b) => a.start - b.start)
     }
 
-    // setInterval(() => {
-    //   for (var i = 0; i < listClasses.length; i++) {
-    //     if (Date.parse(listClasses[i].start) < Date.now()) {
-    //       alert(listClasses[i].start)
-    //     }
-    //   }
-    // })
-  }
+    console.log(nextClassArr)
 
   return (
     <Router>
