@@ -49,6 +49,14 @@ const App = () => {
     }
 
     console.log(nextClassArr)
+    setInterval(() => {
+      console.log(Date.now())
+    }, 1000)
+
+
+    if (sig === Date.now()) {
+      dispatch(startClass(sig.url))
+    }
 
   return (
     <Router>

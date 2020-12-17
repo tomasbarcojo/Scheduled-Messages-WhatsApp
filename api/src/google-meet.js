@@ -98,6 +98,3 @@ class GoogleMeet {
 }
 
 module.exports = GoogleMeet
-
-// const test = new GoogleMeet()
-// test.schedule('https://meet.google.com/tza-ezxn-wod')
